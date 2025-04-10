@@ -7,295 +7,329 @@
 
   <title>Tu Carta de Amor Digital</title>
   <style>
-   @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Indie+Flower&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Indie+Flower&display=swap');
 
-:root {
-    --color-env: #0077B2;
-    --color-env2: #0070a8;
-    --color-flap: #005680;
-    --color-bg: #e1f3fa;
-    --color-heart: #D00000;
-    --env-border-radius: 6px;
-    --env-width: 280px;
-    --env-height: 180px;
-    --heart-width: 50px;
-}
+    :root {
+      --color-primario: #C85A53;
+      --color-texto-principal: #4A4A4A;
+      --color-texto-secundario: #777777;
+      --color-borde: #EEEEEE;
+      --color-fondo: #FDFDFD;
+      --color-beige-calido: #F5F5DC;
+      --color-rosa-palo: #FADADD;
 
-body {
-    font-family: 'Indie Flower', cursive !important;
-    background: #FDE3A7; /*CAPE HONEY*/
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
+      --color-env: var(--color-primario); /* Using primary for envelope */
+      --color-env2: #B04B44; /* Slightly darker shade of primary */
+      --color-flap: #983C36; /* Even darker shade */
+      --color-bg: var(--color-beige-calido); /* Using beige for background */
+      --color-heart: var(--color-primario); /* Using pale pink for hearts */
+      --env-border-radius: 6px;
+      --env-width: 280px;
+      --env-height: 180px;
+      --heart-width: 50px;
+    }
 
-::selection {
-    background: transparent;
-}
+    body {
+      font-family: 'Indie Flower', cursive !important;
+      background: var(--color-bg);
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+      color: var(--color-texto-principal);
+    }
 
-h4 {
-    font-size: 26px;
-    line-height: 1px;
-    font-family: 'Amatic SC', cursive !important;
-}
+    ::selection {
+      background: transparent;
+    }
 
-.color1 {
-    color: #1BBC9B; /*MOUNTAIN MEADOW*/
-}
+    h4 {
+      font-size: 26px;
+      line-height: 1px;
+      font-family: 'Amatic SC', cursive !important;
+      color: var(--color-primario);
+    }
 
-.color2 {
-    color: #C0392B; /*TALL POPPY*/
-}
+    .color1 {
+      color: #1BBC9B; /* Keeping original colors if used elsewhere */
+    }
 
-.envlope-wrapper {
-    height: auto;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 50%;
-}
+    .color2 {
+      color: #C0392B; /* Keeping original colors if used elsewhere */
+    }
 
-#envelope {
-    position: relative;
-    width: var(--env-width);
-    height: var(--env-height);
-    border-bottom-left-radius: var(--env-border-radius);
-    border-bottom-right-radius: var(--env-border-radius);
-    background-color: var(--color-flap);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
-    cursor: pointer;
-    transition: transform 0.4s ease;
-    z-index: 10;
-}
+    .envlope-wrapper {
+      height: auto;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 50%;
+    }
 
-.front {
-    position: absolute;
-    width: 0;
-    height: 0;
-    z-index: 1;
-}
+    #envelope {
+      position: relative;
+      width: var(--env-width);
+      height: var(--env-height);
+      border-bottom-left-radius: var(--env-border-radius);
+      border-bottom-right-radius: var(--env-border-radius);
+      background-color: var(--color-flap);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .2);
+      cursor: pointer;
+      transition: transform 0.4s ease;
+      z-index: 10;
+    }
 
-.flap {
-    border-left: calc(var(--env-width) / 2) solid transparent;
-    border-right: calc(var(--env-width) / 2) solid transparent;
-    border-bottom: calc(var(--env-height) / 2 - 8px) solid transparent;
-    border-top: calc(var(--env-height) / 2 + 8px) solid var(--color-flap);
-    transform-origin: top;
-    pointer-events: none;
-    transition: transform 0.4s ease, z-index 0.6s;
-}
+    .front {
+      position: absolute;
+      width: 0;
+      height: 0;
+      z-index: 1;
+    }
 
-.pocket {
-    border-left: calc(var(--env-width) / 2) solid var(--color-env);
-    border-right: calc(var(--env-width) / 2) solid var(--color-env);
-    border-bottom: calc(var(--env-height) / 2) solid var(--color-env2);
-    border-top: calc(var(--env-height) / 2) solid transparent;
-    border-bottom-left-radius: var(--env-border-radius);
-    border-bottom-right-radius: var(--env-border-radius);
-    pointer-events: none;
-}
+    .flap {
+      border-left: calc(var(--env-width) / 2) solid transparent;
+      border-right: calc(var(--env-width) / 2) solid transparent;
+      border-bottom: calc(var(--env-height) / 2 - 8px) solid transparent;
+      border-top: calc(var(--env-height) / 2 + 8px) solid var(--color-flap);
+      transform-origin: top;
+      pointer-events: none;
+      transition: transform 0.4s ease, z-index 0.6s;
+    }
 
-.letter:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 25%, rgba(215, 227, 239, 0.70) 55%, rgba(215, 227, 239, 1.00) 100%);
-    pointer-events: none;
-}
+    .pocket {
+      border-left: calc(var(--env-width) / 2) solid var(--color-env);
+      border-right: calc(var(--env-width) / 2) solid var(--color-env);
+      border-bottom: calc(var(--env-height) / 2) solid var(--color-env2);
+      border-top: calc(var(--env-height) / 2) solid transparent;
+      border-bottom-left-radius: var(--env-border-radius);
+      border-bottom-right-radius: var(--env-border-radius);
+      pointer-events: none;
+    }
 
-.words {
-    font-family: 'Indie Flower', cursive;
-    width: 80%;
-    background-color: #EEEFF0;
-    padding: 8px;
-    margin-bottom: 5px;
-    border-radius: 4px;
-    font-size: 24px;
-    line-height: 1.5;
-}
+    
 
-.words.line1 {
-    font-weight: bold;
-}
+    .words {
+      font-family: 'Indie Flower', cursive;
+      width: 80%;
+      background-color: var(--color-fondo);
+      padding: 8px;
+      margin-bottom: 5px;
+      border-radius: 4px;
+      font-size: 24px;
+      line-height: 1.5;
+    }
 
-.words.line4 {
-    font-style: italic;
-}
+    .words.line1 {
+      font-weight: bold;
+      color: var(--color-primario);
+    }
 
-.open .flap {
-    transform: rotateX(180deg);
-    z-index: 1;
-}
+    .words.line4 {
+      font-style: italic;
+      color: var(--color-texto-secundario);
+    }
 
-.close .flap {
-    transform: rotateX(0deg);
-    z-index: 5;
-}
+    .open .flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
 
-.close .letter {
-    transform: translateY(0px);
-    z-index: 1;
-    opacity: 0;
-}
+    .close .flap {
+      transform: rotateX(0deg);
+      z-index: 5;
+    }
 
-.letter {
-    font-family: 'Indie Flower', cursive;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 40px 50px;
-    text-align: left;
-    color: #2c3e50;
-    font-size: 20px;
-    line-height: 1.8;
-    transform: scale(0.9);
-    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
-    opacity: 0;
-    overflow-y: auto;
-    z-index: 1;
-}
+    .close .letter {
+      transform: translateY(0px);
+      z-index: 1;
+      opacity: 0;
+    }
 
-.letter strong {
-    font-family: 'Amatic SC', cursive;
-    font-size: 24px;
-}
+    .letter {
+      font-family: 'Indie Flower', cursive;
+      background-color: var(--color-fondo);
+      border-radius: 12px;
+      box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding: 40px 50px;
+      text-align: left;
+      color: var(--color-texto-principal);
+      font-size: 18px;
+      line-height: 1.6;
+      transform: scale(1);
+      transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+      opacity: 0;
+      overflow-y: auto;
+      z-index: 1;
+      border: 1px solid var(--color-borde);
+    }
 
-#envelope.open .letter {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    top: 50%;
-    left: 50%;
-    width: 90vw;
-    height: 90vh;
-    position: fixed;
-}
+    .letter strong {
+      font-family: 'Amatic SC', cursive;
+      font-size: 24px;
+      color: var(--color-primario);
+    }
 
-.hearts {
-    position: fixed;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: 300;
-    pointer-events: none;
-}
+    #envelope.open .letter {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      top: 50%;
+      left: 50%;
+      width: 90vw;
+      height: 90vh;
+      position: fixed;
+    }
 
-.heart {
-    position: absolute;
-    bottom: 0;
-    right: 10%;
-    z-index: 300;
-    pointer-events: none;
-}
+    .hearts {
+      position: fixed;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 300;
+      pointer-events: none;
+    }
 
-.heart:before,
-.heart:after {
-    position: absolute;
-    content: "";
-    left: var(--heart-width);
-    top: 0;
-    width: var(--heart-width);
-    height: calc(var(--heart-width) * 1.6);
-    background: var(--color-heart);
-    border-radius: var(--heart-width) var(--heart-width) 0 0;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-    pointer-events: none;
-}
+    .heart {
+      position: absolute;
+      bottom: 0;
+      right: 10%;
+      z-index: 300;
+      pointer-events: none;
+    }
 
-.heart:after {
-    left: 0;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
-}
+    .heart:before,
+    .heart:after {
+      position: absolute;
+      content: "";
+      left: var(--heart-width);
+      top: 0;
+      width: var(--heart-width);
+      height: calc(var(--heart-width) * 1.6);
+      background: var(--color-heart);
+      border-radius: var(--heart-width) var(--heart-width) 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+      pointer-events: none;
+    }
 
-.close .heart {
-    opacity: 0;
-    animation: none;
-}
+    .heart:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
 
-.a1 {
-    left: 20%;
-    transform: scale(0.6);
-    opacity: 1;
-    animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
-    animation-fill-mode: forwards;
-    animation-delay: .7s;
-}
+    .close .heart {
+      opacity: 0;
+      animation: none;
+    }
 
-.a2 {
-    left: 55%;
-    transform: scale(1);
-    opacity: 1;
-    animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
-    animation-fill-mode: forwards;
-    animation-delay: .7s;
-}
+    .a1 {
+      left: 20%;
+      transform: scale(0.6);
+      opacity: 1;
+      animation: slideUp 4s linear infinite, sideSway 2s ease-in-out infinite alternate;
+      animation-fill-mode: forwards;
+      animation-delay: .7s;
+    }
 
-.a3 {
-    left: 10%;
-    transform: scale(0.8);
-    opacity: 1;
-    animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
-    animation-fill-mode: forwards;
-    animation-delay: .7s;
-}
+    .a2 {
+      left: 55%;
+      transform: scale(1);
+      opacity: 1;
+      animation: slideUp 5s linear infinite, sideSway 4s ease-in-out infinite alternate;
+      animation-fill-mode: forwards;
+      animation-delay: .7s;
+    }
 
-@keyframes slideUp {
-    0% {
+    .a3 {
+      left: 10%;
+      transform: scale(0.8);
+      opacity: 1;
+      animation: slideUp 7s linear infinite, sideSway 2s ease-in-out infinite alternate;
+      animation-fill-mode: forwards;
+      animation-delay: .7s;
+    }
+
+    @keyframes slideUp {
+      0% {
         top: 0;
-    }
-    100% {
+      }
+      100% {
         top: -600px;
+      }
     }
-}
 
-@keyframes sideSway {
-    0% {
+    @keyframes sideSway {
+      0% {
         margin-left: 0px;
-    }
-    100% {
+      }
+      100% {
         margin-left: 50px;
+      }
     }
-}
 
-.reset {
-    text-align: center;
-    margin-top: 30px;
-}
+    .reset {
+      text-align: center;
+      margin-top: 30px;
+    }
 
-.reset button {
-    font-weight: 800;
-    font-style: normal;
-    transition: all .1s linear;
-    -webkit-appearance: none;
-    background-color: transparent;
-    border: solid 2px var(--color-env);
-    border-radius: 4px;
-    color: var(--color-env);
-    display: inline-block;
-    font-size: 14px;
-    text-transform: uppercase;
-    margin: 5px;
-    padding: 10px;
-    line-height: 1em;
-    text-decoration: none;
-    min-width: 120px;
-    cursor: pointer;
-}
+    .reset button {
+      font-weight: 800;
+      font-style: normal;
+      transition: all .1s linear;
+      -webkit-appearance: none;
+      background-color: transparent;
+      border: solid 2px var(--color-primario);
+      border-radius: 4px;
+      color: var(--color-primario);
+      display: inline-block;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin: 5px;
+      padding: 10px;
+      line-height: 1em;
+      text-decoration: none;
+      min-width: 120px;
+      cursor: pointer;
+    }
 
-.reset button:hover {
-    background-color: var(--color-env);
-    color: #fff;
-}
+    .reset button:hover {
+      background-color: var(--color-primario);
+      color: var(--color-fondo);
+    }
 
-     
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      #envelope.open .letter {
+        font-size: 18px;
+        line-height: 1.6;
+        padding: 20px 30px;
+        width: 95vw;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+    }
+
+    /* Mobile adjustments */
+@media (max-width: 768px) {
+  .envlope-wrapper {
+    margin-top: 30%; /* Reduce top margin on mobile */
+    align-items: center; /* Center vertically in the wrapper */
+  }
+
+  #envelope.open .letter {
+    font-size: 18px;
+    line-height: 1.6;
+    padding: 20px 30px;
+    width: 95vw;
+    height: auto;
+    max-height: 80vh; /* Slightly reduce max height */
+    overflow-y: auto;
+  }
+}
   </style>
 </head>
 <body>
@@ -306,11 +340,11 @@ h4 {
       <div class="letter">
         <div class="words line1">Mi amor,</div>
         <div class="words line2">
-          No hay palabras suficientes para expresar lo que siento por ti. Cada día a tu lado es un regalo que atesoro con todo mi corazón. En cada sonrisa tuya encuentro paz, y en cada abrazo encuentro mi hogar.  
+          No hay palabras suficientes para expresar lo que siento por ti. Cada día a tu lado es un regalo que atesoro con todo mi corazón. En cada sonrisa tuya encuentro paz, y en cada abrazo encuentro mi hogar.
           <br><br>
-          Eres la razón por la que mi corazón late con más fuerza. Eres mi sol, mi refugio, mi inspiración y mi amor eterno.  
+          Eres la razón por la que mi corazón late con más fuerza. Eres mi sol, mi refugio, mi inspiración y mi amor eterno.
           <br><br>
-          Gracias por ser tú. Por existir. Por elegirme.  
+          Gracias por ser tú. Por existir. Por elegirme.
           <br><br>
           Con todo mi amor,
           <br>
