@@ -1,0 +1,203 @@
+:root {
+    --color-primario: #C85A53;
+    --color-texto-principal: #4A4A4A;
+    --color-texto-secundario: #777777;
+    --color-borde: #EEEEEE;
+    --color-fondo: #FDFDFD;
+    --color-beige-calido: #F5F5DC;
+    --color-rosa-palo: #FADADD;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+}
+
+.back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-rosa-palo);
+    animation: back 3s infinite;
+}
+
+/* Texto cargando */
+.loading-text {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: var(--color-texto-principal);
+    text-align: center;
+    animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+/* Responsive text size */
+@media (max-width: 480px) {
+    .loading-text {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+}
+
+/* Animación suave */
+@keyframes fadeIn {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Corazones */
+.love,
+.love-1,
+.love-2 {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: rotate(-45deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.love {
+    background-color: var(--color-primario);
+    width: 35vw;
+    height: 35vw;
+    animation: love 3s 1s infinite;
+}
+.love::before,
+.love::after {
+    content: "";
+    position: absolute;
+    background-color: var(--color-primario);
+    border-radius: 50%;
+    width: 35vw;
+    height: 35vw;
+}
+.love::before {
+    top: -17.5vw;
+    left: 0;
+}
+.love::after {
+    left: 17.5vw;
+    top: 0;
+}
+
+.love-1 {
+    background-color: var(--color-rosa-palo);
+    width: 18vw;
+    height: 18vw;
+    animation: love-1 2s 1.7s infinite;
+}
+.love-1::before,
+.love-1::after {
+    content: "";
+    position: absolute;
+    background-color: var(--color-rosa-palo);
+    border-radius: 50%;
+    width: 18vw;
+    height: 18vw;
+}
+.love-1::before {
+    top: -9vw;
+    left: 0;
+}
+.love-1::after {
+    top: 0;
+    left: 9vw;
+}
+
+.love-2 {
+    background-color: var(--color-beige-calido);
+    width: 9vw;
+    height: 9vw;
+    animation: love-2 1s 1s infinite;
+}
+.love-2::before,
+.love-2::after {
+    content: "";
+    position: absolute;
+    background-color: var(--color-beige-calido);
+    border-radius: 50%;
+    width: 9vw;
+    height: 9vw;
+}
+.love-2::before {
+    top: -4.5vw;
+    left: 0;
+}
+.love-2::after {
+    top: 0;
+    left: 4.5vw;
+}
+
+/* Animaciones */
+@keyframes back {
+    50% {
+        background: var(--color-beige-calido);
+    }
+}
+
+@keyframes love {
+    50% {
+        transform: scale(0.3) rotate(-45deg);
+    }
+}
+
+@keyframes love-1 {
+    50% {
+        transform: scale(0.5) rotate(-45deg);
+    }
+}
+
+@keyframes love-2 {
+    50% {
+        transform: scale(1.25) rotate(-45deg);
+    }
+}
+
+@media (max-width: 480px) {
+    .love {
+        width: 50vw;
+        height: 50vw;
+    }
+    .love::before,
+    .love::after {
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .love-1 {
+        width: 25vw;
+        height: 25vw;
+    }
+    .love-1::before,
+    .love-1::after {
+        width: 25vw;
+        height: 25vw;
+    }
+
+    .love-2 {
+        width: 12.5vw;
+        height: 12.5vw;
+    }
+    .love-2::before,
+    .love-2::after {
+        width: 12.5vw;
+        height: 12.5vw;
+    }
+}
