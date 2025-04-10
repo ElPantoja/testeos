@@ -8,76 +8,40 @@
     --color-rosa-palo: #FADADD;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-body, html {
+body {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    font-family: 'Lato', sans-serif;
-    overflow: hidden;
+    overflow: hidden; /* To prevent scrollbars due to fixed elements */
 }
 
 .back {
     position: fixed;
+    padding: 0;
+    margin: 0;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background: var(--color-rosa-palo);
-    animation: back 3s infinite;
-}
-
-/* Texto cargando */
-.loading-text {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.5rem;
-    color: var(--color-texto-principal);
-    text-align: center;
-    animation: fadeIn 2s ease-in-out infinite alternate;
-}
-
-/* Responsive text size */
-@media (max-width: 480px) {
-    .loading-text {
-        font-size: 1.1rem;
-        padding: 0 10px;
-    }
-}
-
-/* Animación suave */
-@keyframes fadeIn {
-    0% { opacity: 0.3; }
-    100% { opacity: 1; }
-}
-
-/* Corazones */
-.love,
-.love-1,
-.love-2 {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: rotate(-45deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    animation-name: back;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 
 .love {
+    position: absolute;
     background-color: var(--color-primario);
-    width: 35vw;
-    height: 35vw;
-    animation: love 3s 1s infinite;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    top: 15%; /* Adjusted top position */
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: rotate(-45deg);
+    animation-name: love;
+    animation-duration: 3s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
 }
 .love::before,
 .love::after {
@@ -85,67 +49,18 @@ body, html {
     position: absolute;
     background-color: var(--color-primario);
     border-radius: 50%;
-    width: 35vw;
-    height: 35vw;
+    width: 250px;
+    height: 250px;
 }
 .love::before {
-    top: -17.5vw;
+    top: -125px;
     left: 0;
 }
 .love::after {
-    left: 17.5vw;
     top: 0;
+    left: 125px;
 }
 
-.love-1 {
-    background-color: var(--color-rosa-palo);
-    width: 18vw;
-    height: 18vw;
-    animation: love-1 2s 1.7s infinite;
-}
-.love-1::before,
-.love-1::after {
-    content: "";
-    position: absolute;
-    background-color: var(--color-rosa-palo);
-    border-radius: 50%;
-    width: 18vw;
-    height: 18vw;
-}
-.love-1::before {
-    top: -9vw;
-    left: 0;
-}
-.love-1::after {
-    top: 0;
-    left: 9vw;
-}
-
-.love-2 {
-    background-color: var(--color-beige-calido);
-    width: 9vw;
-    height: 9vw;
-    animation: love-2 1s 1s infinite;
-}
-.love-2::before,
-.love-2::after {
-    content: "";
-    position: absolute;
-    background-color: var(--color-beige-calido);
-    border-radius: 50%;
-    width: 9vw;
-    height: 9vw;
-}
-.love-2::before {
-    top: -4.5vw;
-    left: 0;
-}
-.love-2::after {
-    top: 0;
-    left: 4.5vw;
-}
-
-/* Animaciones */
 @keyframes back {
     50% {
         background: var(--color-beige-calido);
@@ -158,10 +73,80 @@ body, html {
     }
 }
 
+/* love-1 */
+.love-1 {
+    position: absolute;
+    background-color: var(--color-rosa-palo);
+    width: 125px;
+    height: 125px;
+    margin: auto;
+    top: 15%; /* Adjusted top position */
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: rotate(-45deg);
+    animation-name: love-1;
+    animation-duration: 2s;
+    animation-delay: 1.7s;
+    animation-iteration-count: infinite;
+}
+.love-1::before,
+.love-1::after {
+    content: "";
+    position: absolute;
+    background-color: var(--color-rosa-palo);
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+}
+.love-1::before {
+    top: -62.5px;
+    left: 0;
+}
+.love-1::after {
+    top: 0;
+    left: 62.5px;
+}
+
 @keyframes love-1 {
     50% {
         transform: scale(0.5) rotate(-45deg);
     }
+}
+
+/* love-2 */
+.love-2 {
+    position: absolute;
+    background-color: var(--color-beige-calido);
+    width: 62.5px;
+    height: 62.5px;
+    margin: auto;
+    top: 15%; /* Adjusted top position */
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: rotate(-45deg);
+    animation-name: love-2;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+}
+.love-2::before,
+.love-2::after {
+    content: "";
+    position: absolute;
+    background-color: var(--color-beige-calido);
+    border-radius: 50%;
+    width: 62.5px;
+    height: 62.5px;
+}
+.love-2::before {
+    top: -31.25px;
+    left: 0;
+}
+.love-2::after {
+    top: 0;
+    left: 31.25px;
 }
 
 @keyframes love-2 {
@@ -170,34 +155,28 @@ body, html {
     }
 }
 
-@media (max-width: 480px) {
-    .love {
-        width: 50vw;
-        height: 50vw;
-    }
-    .love::before,
-    .love::after {
-        width: 50vw;
-        height: 50vw;
-    }
+/* Estilos para el texto de carga */
+.loading-text {
+    position: absolute;
+    top: 90%; /* Adjusted to move text further down */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-texto-principal);
+    font-family: 'Lato', sans-serif;
+    font-size: 1.2em;
+    font-weight: 400;
+    text-align: center;
+    /* Remove white-space: nowrap; to allow wrapping */
+}
 
-    .love-1 {
-        width: 25vw;
-        height: 25vw;
-    }
-    .love-1::before,
-    .love-1::after {
-        width: 25vw;
-        height: 25vw;
-    }
+.loading-text strong {
+    font-weight: 700;
+    color: var(--color-primario);
+}
 
-    .love-2 {
-        width: 12.5vw;
-        height: 12.5vw;
-    }
-    .love-2::before,
-    .love-2::after {
-        width: 12.5vw;
-        height: 12.5vw;
+/* Media query for smaller screens (e.g., mobile) */
+@media (max-width: 600px) {
+    .loading-text {
+        font-size: 1em; /* Reduce font size on smaller screens */
     }
 }
