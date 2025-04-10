@@ -33,7 +33,7 @@ body {
     width: 250px;
     height: 250px;
     margin: auto;
-    top: 15%; /* Adjusted top position */
+    top: 5%; /* Adjusted top position */
     left: 0;
     bottom: 0;
     right: 0;
@@ -80,7 +80,7 @@ body {
     width: 125px;
     height: 125px;
     margin: auto;
-    top: 15%; /* Adjusted top position */
+    top: 5%; /* Adjusted top position */
     left: 0;
     bottom: 0;
     right: 0;
@@ -121,7 +121,7 @@ body {
     width: 62.5px;
     height: 62.5px;
     margin: auto;
-    top: 15%; /* Adjusted top position */
+    top: 5%; /* Adjusted top position */
     left: 0;
     bottom: 0;
     right: 0;
